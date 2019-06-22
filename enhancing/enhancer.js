@@ -10,7 +10,16 @@ function succeed(item) {
 }
 
 function fail(item) {
-  return { ...item };
+  switch (true) {
+    case item.enhancement < 15:
+      return { ...item, durability: item.durability - 5 };
+    case item.enhancement > 16:
+      return { ...item, enhancement: item.enhancement - 1 };
+    case item.enhancement >= 15:
+      return { ...item, durability: item.durability - 10 };
+    default:
+      return { ...item };
+  }
 }
 
 function repair(item) {
