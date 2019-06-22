@@ -1,5 +1,4 @@
 const { repair, fail, succeed } = require("./enhancer.js");
-// test away!
 
 const item = {
   name: "the mf test item",
@@ -25,7 +24,7 @@ const highEnhancementItem = {
   enhancement: 18
 };
 const veryHighEnhancementItem = {
-  name: "high enhancement test item",
+  name: "very high enhancement test item",
   durability: 100,
   enhancement: 20
 };
