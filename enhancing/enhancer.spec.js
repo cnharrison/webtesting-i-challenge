@@ -1,4 +1,4 @@
-const { repair, fail } = require("./enhancer.js");
+const { repair, fail, succeed } = require("./enhancer.js");
 // test away!
 
 const item = {
@@ -24,6 +24,11 @@ const highEnhancementItem = {
   durability: 100,
   enhancement: 18
 };
+const veryHighEnhancementItem = {
+  name: "high enhancement test item",
+  durability: 100,
+  enhancement: 20
+};
 
 describe("repair function", () => {
   it("sets durability to 100", () => {
@@ -44,5 +49,20 @@ describe("failure function", () => {
   it("subtracts 1 from enh if enh > 16", () => {
     const result = fail(highEnhancementItem);
     expect(result.enhancement).toBe(highEnhancementItem.enhancement - 1);
+  });
+});
+
+describe("success function", () => {
+  it("adds 1 to enh", () => {
+    const result = succeed(item);
+    expect(result.enhancement).toBe(item.enhancement + 1);
+  });
+  it("doesn't change enh level if enh = 20", () => {
+    const result = succeed(veryHighEnhancementItem);
+    expect(result.enhancement).toBe(veryHighEnhancementItem.enhancement);
+  });
+  it("never changes dur", () => {
+    const result = succeed(item);
+    expect(result.durability).toBe(item.durability);
   });
 });
